@@ -17,6 +17,16 @@ header {
   text-align: center;
 }
 
+/* Blue divider line in header */
+.header-divider {
+  border: none;
+  height: 4px;
+  width: 80px;
+  background-color: #00b8fc; /* Lighter Intel blue */
+  margin: 24px auto;
+  border-radius: 2px;
+}
+
 /* Resize the Intel logo */
 header img {
   width: 120px; /* Adjust size as needed */
