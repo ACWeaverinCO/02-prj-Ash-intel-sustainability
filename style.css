@@ -49,11 +49,34 @@ header p {
 /* Timeline section styling */
 section {
   display: flex;
-  flex-wrap: wrap; /* Allow cards to wrap on small screens */
-  justify-content: center;
+  flex-direction: row;
+  overflow-x: auto; /* Enable horizontal scroll */
   gap: 24px; /* Space between cards */
   padding: 32px 16px;
+  justify-content: flex-start;
+  align-items: stretch;
+  scroll-snap-type: x mandatory; /* Snap cards when scrolling */
 }
+
+/* Make each card snap to the scroll position */
+section > div {
+  scroll-snap-align: start;
+}
+
+/* Stack cards vertically on small screens */
+@media (max-width: 700px) {
+  section {
+    flex-direction: column;
+    overflow-x: visible;
+    align-items: center;
+  }
+  section > div {
+    min-width: 0;
+    width: 90vw;
+    max-width: 400px;
+  }
+}
+
 
 /* Card styling */
 section > div {
