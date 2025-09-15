@@ -51,11 +51,15 @@ section {
   display: flex;
   flex-direction: row;
   overflow-x: auto; /* Enable horizontal scroll */
-  gap: 24px; /* Space between cards */
+  gap: 12px; /* Space between cards */
   padding: 32px 16px;
   justify-content: flex-start;
   align-items: stretch;
   scroll-snap-type: x mandatory; /* Snap cards when scrolling */
+  max-width: 1300px; /* Show max 4 cards (4 x 260px + 3 x 12px gap) */
+  margin: 0 auto;
+  scroll-behavior: smooth; /* Enable smooth scrolling */
+  scroll-padding-left: 16px; /* Ensure first card aligns nicely */
 }
 
 /* Make each card snap to the scroll position */
@@ -64,7 +68,7 @@ section > div {
 }
 
 /* Stack cards vertically on small screens */
-@media (max-width: 700px) {
+@media (max-width: 1200px) {
   section {
     flex-direction: column;
     overflow-x: visible;
@@ -85,6 +89,8 @@ section > div {
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 104, 181, 0.08); /* Soft blue shadow */
   width: 260px;
+  min-width: 260px;
+  max-width: 260px;
   padding: 20px;
   transition: transform 0.2s, box-shadow 0.2s;
   cursor: pointer; /* Show pointer on hover */
@@ -108,9 +114,10 @@ section > div p {
 
 /* Card hover effect */
 section > div:hover {
-  transform: translateY(-6px) scale(1.03);
-  box-shadow: 0 6px 16px rgba(0, 104, 181, 0.18);
+  transform: translateY(-10px) scale(1.12); /* Make card larger and lift up */
+  box-shadow: 0 12px 32px rgba(0, 104, 181, 0.22);
   border-color: #00b8fc; /* Lighter blue on hover */
+  z-index: 2;
 }
 /* Reveal paragraph smoothly on hover */
 section > div:hover p {
